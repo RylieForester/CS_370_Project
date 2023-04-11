@@ -190,10 +190,6 @@
             <th style="padding-top: 15px; padding-left: 10px">&#9900 Billing_Addr - The billing address listed for the order.
                 Valid values are any valid address. Functionally determined by Order_ID.</th>
         </tr>
-        <tr>
-            <th style="padding-top: 15px; padding-left: 10px; padding-bottom: 15px">&#9900 Est_Delivery_Date - The established delivery date of the order.
-                Valid values are any valid dates. Functionally determined by Order_ID.</th>
-        </tr>
     </table>
 
 
