@@ -173,8 +173,6 @@
     </table>
     <br><br>
 
-    </table>
-
 
 </div>
 

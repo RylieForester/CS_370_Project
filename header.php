@@ -1,5 +1,5 @@
 
-<html>
+<html lang="en-us">
 <head>
     <title>Amazon Database Portal</title>
     <link href="bootstrap.min.css" rel="stylesheet"/>
@@ -16,7 +16,7 @@
 
     <li class = "nav-item dropdown">
         <a class="nav-link dropdown-toggle" data-bs-toggle = "dropdown"
-           href="#" role="button" arai-expanded="false">Import Data</a>
+           href="#" role="button" aria-expanded="false">Import Data</a>
 
         <ul class="dropdown-menu">
             <li>
@@ -34,7 +34,7 @@
 
     <li class = "nav-item dropdown">
         <a class="nav-link dropdown-toggle" data-bs-toggle = "dropdown"
-           href="#" role="button" arai-expanded="false">Data Reports</a>
+           href="#" role="button" aria-expanded="false">Data Reports</a>
 
         <ul class="dropdown-menu">
             <li>
@@ -52,4 +52,6 @@
 </ul>
 <br>
 
-<div class="container">
+<div class="container"></div>
+</body>
+</html>
