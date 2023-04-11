@@ -1,0 +1,9 @@
+When you're finished, edit this file and push it. Put your name and date when you finish the approriate task. Tasks are in no particular order.
+
+1) Make 3 CSV Files
+2) Finish Data Dictionary
+3) Make 3 data reports
+4) 3 import processes that push data into tables
+5) Make homepage
+6) Insert ERD into website
+7) Create Database based on ERD and import data
