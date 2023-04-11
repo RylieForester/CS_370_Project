@@ -149,6 +149,31 @@
     </table>
     <br><br>
 
+    <table style="border: 1px solid white; background-color: rgb(94, 165, 212); margin-left: auto; margin-right: auto; height: 200px">
+        <tr>
+            <th style="border: 1px solid white; font-size: 22px; text-align: center; height: 40px">ORDER</th>
+        </tr>
+        <tr>
+            <th style="padding-top: 15px; padding-left: 10px">&#9900 Order_ID - The ID associated with a customer’s order.
+                Valid values are any integer 0 or greater. This value must be unique and is auto-incrementing.
+                It functionally determines all the non-key attributes in the Customer table. This value is a primary key of the table.</th>
+        </tr>
+        <tr>
+            <th style="padding-top: 15px; padding-left: 10px">&#9900 Shipping_Addr - The shipping address listed for the order.
+                Valid values are any valid address. Functionally determined by Order_ID.</th>
+        </tr>
+        <tr>
+            <th style="padding-top: 15px; padding-left: 10px">&#9900 Billing_Addr - The billing address listed for the order.
+                Valid values are any valid address. Functionally determined by Order_ID.</th>
+        </tr>
+        <tr>
+            <th style="padding-top: 15px; padding-left: 10px; padding-bottom: 15px">&#9900 Est_Delivery_Date - The established delivery date of the order.
+                Valid values are any valid dates. Functionally determined by Order_ID.</th>
+        </tr>
+    </table>
+
+
+
 </div>
 
 <?php include_once("footer.php")?>
