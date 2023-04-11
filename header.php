@@ -1,5 +1,5 @@
 
-<html lang="en-us">
+<html>
 <head>
     <title>Amazon Database Portal</title>
     <link href="bootstrap.min.css" rel="stylesheet"/>
