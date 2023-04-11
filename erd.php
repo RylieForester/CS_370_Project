@@ -5,7 +5,8 @@
     <br>
     <p class = "text-light" style="text-align: center"> Below is an graphical image of the various entities, attributes,
         and relationships that are included in our database.</p>
-    <img src="">
+    <p style="text-align: center"><img src="CS370_ERD.png" alt="Team #1 ERD (CS 370)"></p>
+
 
 </div>
 
