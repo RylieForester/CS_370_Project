@@ -1,3 +1,4 @@
+
 <html>
 <head>
     <title>Amazon Database Portal</title>
@@ -5,7 +6,10 @@
     <script src="bootstrap.bundle.js" rel="stylesheet"></script>
 </head>
 <body>
-
+    
+<?php
+    //Neil Was here
+?>
 
 <ul class = "nav" style="padding-top: 15px; padding-left: 420px">
     <li class = "nav-item"><a class = "nav-link" href="index.php">Home</a></li>
