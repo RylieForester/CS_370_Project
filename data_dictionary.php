@@ -93,7 +93,7 @@
                 Functionally determined by Customer_ID.</th>
         </tr>
         <tr>
-            <th>&#9900  Pref_gender - The preferred gender of the customer. Valid values are “Male” and “Female.”
+            <th>&#9900  Pref_gender - The preferred gender of the customer. Valid values are “Male” and “Female.” This attribute can be a NULL value.
                 Functionally determined by Customer_ID. </th>
         </tr>
         <tr>
