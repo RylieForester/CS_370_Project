@@ -103,14 +103,76 @@
         </tr>
         <tr>
             <th style="padding-top: 15px; padding-left: 10px">&#9900 Item_Number - The number associated with an item.
-                This value is a foreign key from the Item_Number in the Items table. </th>
+                This value is a foreign key from the Item_Number in the Items table.</th>
         </tr>
         <tr>
             <th style="padding-top: 15px; padding-left: 10px; padding-bottom: 15px">&#9900 Date_Added - The date an item was added favorited by a customer.
-                Valid values are any valid dates. Functionally determined by Customer_ID. </th>
+                Valid values are any valid dates. Functionally determined by Customer_ID.</th>
         </tr>
     </table>
     <br><br>
+
+    <table style="border: 1px solid white; background-color: rgb(94, 165, 212); margin-left: auto; margin-right: auto; height: 200px">
+        <tr>
+            <th style="border: 1px solid white; font-size: 22px; text-align: center; height: 40px">ITEMS</th>
+        </tr>
+        <tr>
+            <th style="padding-top: 15px; padding-left: 10px">&#9900 Item_Number - The ID associated with the item. Valid values are any integer 0 or greater.
+                This value must be unique and is auto-incrementing. It functionally determines all the non-key attributes in the Items table.
+                This value is a primary key of the table.</th>
+        </tr>
+        <tr>
+            <th style="padding-top: 15px; padding-left: 10px">&#9900 Item_Name - The name of the item.
+                Valid values are any valid name. Functionally determined by Item_Number.</th>
+        </tr>
+        <tr>
+            <th style="padding-top: 15px; padding-left: 10px">&#9900 Price - The price of the item.
+                Valid values are any numbers that have a length of eight, with two digits after the decimal point.
+                Functionally determined by Item_Number. </th>
+        </tr>
+        <tr>
+            <th style="padding-top: 15px; padding-left: 10px">&#9900 Total_in_Stock - The total amount of the item that is in stock.
+                Valid values are any integer 0 or greater.  Functionally determined by Item_Number.</th>
+        </tr>
+        <tr>
+            <th style="padding-top: 15px; padding-left: 10px">&#9900 Category_ID - The ID of the item category.
+                This value is a foreign key from the Category_ID column in the Category table. Functionally determined by Item_Number. </th>
+        </tr>
+        <tr>
+            <th style="padding-top: 15px; padding-left: 10px">&#9900 Item_Description - The description of the item. Valid values are any string of up to 255 characters.
+                Functionally determined by Item_Number.</th>
+        </tr>
+        <tr>
+            <th style="padding-top: 15px; padding-left: 10px; padding-bottom: 15px">&#9900 Manufacturer - The manufacturer of the item. Valid values are any valid manufacturer name.
+                Functionally determined by Item_Number. </th>
+        </tr>
+    </table>
+    <br><br>
+
+    <table style="border: 1px solid white; background-color: rgb(94, 165, 212); margin-left: auto; margin-right: auto; height: 200px">
+        <tr>
+            <th style="border: 1px solid white; font-size: 22px; text-align: center; height: 40px">ORDER</th>
+        </tr>
+        <tr>
+            <th style="padding-top: 15px; padding-left: 10px">&#9900 Order_ID - The ID associated with a customer’s order.
+                Valid values are any integer 0 or greater. This value must be unique and is auto-incrementing.
+                It functionally determines all the non-key attributes in the Customer table. This value is a primary key of the table.</th>
+        </tr>
+        <tr>
+            <th style="padding-top: 15px; padding-left: 10px">&#9900 Shipping_Addr - The shipping address listed for the order.
+                Valid values are any valid address. Functionally determined by Order_ID.</th>
+        </tr>
+        <tr>
+            <th style="padding-top: 15px; padding-left: 10px">&#9900 Billing_Addr - The billing address listed for the order.
+                Valid values are any valid address. Functionally determined by Order_ID.</th>
+        </tr>
+        <tr>
+            <th style="padding-top: 15px; padding-left: 10px; padding-bottom: 15px">&#9900 Est_Delivery_Date - The established delivery date of the order.
+                Valid values are any valid dates. Functionally determined by Order_ID.</th>
+        </tr>
+    </table>
+    <br><br>
+
 
 </div>
 
