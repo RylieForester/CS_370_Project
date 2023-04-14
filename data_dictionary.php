@@ -132,7 +132,7 @@
                 This value is a foreign key from the Item_Number in the Items table.</th>
         </tr>
         <tr>
-            <th>&#9900 Date_Added - The date an item was added favorited by a customer.
+            <th>&#9900 Date_Added - The date an item was favorited by a customer.
                 Valid values are any valid dates. Functionally determined by Customer_ID.</th>
         </tr>
     </table>
@@ -304,7 +304,7 @@
                 This value is a foreign key from the Item_Number in the Items table.</th>
         </tr>
         <tr>
-            <th>&#9900 Date_added - The date an item was added favorited by a customer.
+            <th>&#9900 Date_added - The date the review was added by a customer.
                 Valid values are any valid dates. Functionally determined by Customer_ID. </th>
         </tr>
     </table>
