@@ -62,7 +62,7 @@
         </tr>
         <tr>
             <th>&#9900 Category_Desc - The description of the category.
-                Valid values are strings of up to 255 characters. Functionally determined by Category_ID. </th>
+                Valid values are any string of up to 255 characters. Functionally determined by Category_ID. </th>
         </tr>
         <tr>
             <th>&#9900 Category_type - The type of the category.
