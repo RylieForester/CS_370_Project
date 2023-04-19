@@ -4,6 +4,6 @@ When you're finished, edit this file and push it. Put your name and date when yo
 2) Finish Data Dictionary (Rylie - 04.12.23)
 3) Make 3 data reports
 4) 3 import processes that push data into tables (Michael)
-5) Make homepage (Rylie)
+5) Make homepage (Rylie - 04.19.23)
 6) Insert ERD into website (Rylie - 04.11.23)
 7) Create Database based on ERD and import data (Michael)
