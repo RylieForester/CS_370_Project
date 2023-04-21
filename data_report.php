@@ -2,7 +2,7 @@
 $connection_error = false;
 $connection_error_msg = "";
 
-$con = @mysqli_conect("host", "username", "password", "database");
+$con = @mysqli_connect("host", "username", "password", "database");
 
 if(mysqli_connect_errno()){
     $connection_error = true;
@@ -24,7 +24,18 @@ function output_error($title, $error){
 </head>
     
 <style> /* add table formatting here*/
-     
+     table.customerDataTable {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        table.customerDataTable td, table.customerDataTable th {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+        table.customerDataTable th {
+            background-color: #ddd;
+        }
 </style>
 
 <body>
@@ -36,6 +47,9 @@ function output_error($title, $error){
         } else { //format the tables here
             function output_table_open(){
                 echo "<table class = 'customerDataTable'>";
+                echo "<tr><th>Customer ID</th><th>Name</th><th>Email</th></tr>";
+
+                $sql = "SELECT * FROM customers";
             }
         }
     ?>
