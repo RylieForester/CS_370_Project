@@ -1,6 +1,6 @@
 When you're finished, edit this file and push it. Put your name and date when you finish the appropriate task. Tasks are in no particular order.
 
-1) Make 3 CSV Files
+1) Make 3 CSV Files (Rylie - 04.21.23)
 2) Finish Data Dictionary (Rylie - 04.12.23)
 3) Make 3 data reports
 4) 3 import processes that push data into tables (Michael)
