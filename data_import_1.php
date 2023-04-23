@@ -20,13 +20,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             $contents = file_get_contents($_FILES["importFile"]["tmp_name"]);
             $lines = explode( "\n", $contents);
             $count = 0;
+            $count_of_Inserts = 0;
+            $count_of_Updates = 0;
 
             foreach($lines as $line){
 
                 $parsed_csv_line = str_getcsv($line);
-
-                $count_of_Inserts = 0;
-                $count_of_Updates = 0;
 
                 //Do something with the parsed data . Look at the array (skip the first line).
                 $Order_ID = $parsed_csv_line[0];
