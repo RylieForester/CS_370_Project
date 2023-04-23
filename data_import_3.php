@@ -71,7 +71,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                                         Customer_ID = '"  . $Customer_ID . "',   
                                         Item_number = '" . $Item_Number . "', 
                                         Quantity_of_Item = '" . $Quantity_of_Item . "'
-                                        WHERE Item_number = '" . $Item_Number . "'";
+                                        WHERE Customer_ID = '" . $Customer_ID . "'";
 
                 if ($count > 0) {
 
