@@ -6,6 +6,13 @@ $import_attempted = false;
 $import_succeeded = false;
 $import_error_message = "";
 
+$count_of_Inserts_in_Customer = 0;
+$count_of_Inserts_in_Cart = 0;
+$count_of_Inserts_in_Pay = 0;
+$count_of_Updates_in_Customer = 0;
+$count_of_Updates_in_Cart = 0;
+$count_of_Updates_in_Pay = 0;
+
 if($_SERVER["REQUEST_METHOD"] == "POST"){
     $import_attempted = true;
 
@@ -20,8 +27,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             $contents = file_get_contents($_FILES["importFile"]["tmp_name"]);
             $lines = explode( "\n", $contents);
             $count = 0;
-            $count_of_Inserts = 0;
-            $count_of_Updates = 0;
 
             foreach($lines as $line){
 
@@ -84,10 +89,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     if ($Customer_ID != $prev_Customer_ID) {
                         if ($Customer_row_count < 1) {
                             mysqli_query($connection, $mysql_First_Insert);
-                            $count_of_Inserts++;
+                            $count_of_Inserts_in_Customer++;
                         }else {
                             mysqli_query($connection, $mysql_First_Update);
-                            $count_of_Updates++;
+                            $count_of_Updates_in_Customer++;
                         }
                     }
 
@@ -100,10 +105,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     if ($Customer_ID != $prev_Customer_ID) {
                         if ($Cart_row_count < 1) {
                             mysqli_query($connection, $mysql_Second_Insert);
-                            $count_of_Inserts++;
+                            $count_of_Inserts_in_Cart++;
                         }else {
                             mysqli_query($connection, $mysql_Second_Update);
-                            $count_of_Updates++;
+                            $count_of_Updates_in_Cart++;
                         }
                     }
 
@@ -116,7 +121,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     if ($Customer_ID != $prev_Customer_ID) {
                         if ($Pay_row_count < 1) {
                             mysqli_query($connection, $mysql_Third_Insert);
-                            $count_of_Inserts++;
+                            $count_of_Inserts_in_Pay++;
+                        } else {
+                            $count_of_Updates_in_Pay++;
                         }
                     }
 
@@ -124,94 +131,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 $count++;
 
                 //For full credit, track how many rows were inserted and updated in each entity, and print them out.
-                //TODO
                 $prev_line = $line;
                 $parsed_csv_line_2 = str_getcsv($prev_line);
                 $prev_Customer_ID = $parsed_csv_line_2[0];
                 $prev_Order_Detail_ID = $parsed_csv_line_2[5];
 
-                if ($line === $lines[array_key_last($lines)]) {
-
-                    ?><div class = "p-5 bg-dark"> <?php
-
-                    $result = $connection->query("SELECT * FROM mydb.Customer");
-
-                    $query = array();
-                    while($query[] = mysqli_fetch_assoc($result));
-                    array_pop($query);
-
-                    echo '<table border="1">';
-                    echo '<tr>';
-                    foreach($query[0] as $key => $value) {
-                        echo '<td>';
-                        echo $key;
-                        echo '</td>';
-                    }
-                    echo '</tr>';
-                    foreach($query as $row) {
-                        echo '<tr>';
-                        foreach($row as $column) {
-                            echo '<td>';
-                            echo $column;
-                            echo '</td>';
-                        }
-                        echo '</tr>';
-                    }
-                    echo '</table>';
-
-                    $result2 = $connection->query("SELECT * FROM mydb.Cart");
-
-                    $query2 = array();
-                    while($query2[] = mysqli_fetch_assoc($result2));
-                    array_pop($query2);
-
-                    echo '<table border="1">';
-                    echo '<tr>';
-                    foreach($query2[0] as $key => $value) {
-                        echo '<td>';
-                        echo $key;
-                        echo '</td>';
-                    }
-                    echo '</tr>';
-                    foreach($query2 as $row) {
-                        echo '<tr>';
-                        foreach($row as $column) {
-                            echo '<td>';
-                            echo $column;
-                            echo '</td>';
-                        }
-                        echo '</tr>';
-                    }
-                    echo '</table>';
-
-                    $result3 = $connection->query("SELECT * FROM mydb.Payment_Methods");
-
-                    $query3 = array();
-                    while($query3[] = mysqli_fetch_assoc($result3));
-                    array_pop($query3);
-
-                    echo '<table border="1">';
-                    echo '<tr>';
-                    foreach($query3[0] as $key => $value) {
-                        echo '<td>';
-                        echo $key;
-                        echo '</td>';
-                    }
-                    echo '</tr>';
-                    foreach($query3 as $row) {
-                        echo '<tr>';
-                        foreach($row as $column) {
-                            echo '<td>';
-                            echo $column;
-                            echo '</td>';
-                        }
-                        echo '</tr>';
-                    }
-                    echo '</table>';
-
-                    echo "There were " . $count_of_Inserts . " rows inserted and " . $count_of_Updates . " rows updated";
-    ?> </div> <?php
-                }
 
             }
             $connection->close();
@@ -240,7 +164,15 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         if($import_succeeded){
             ?>
             <h1><span class="text-success">Import Succeeded!</span></h1>
-
+            <?php echo "There were " . $count_of_Inserts_in_Customer . " rows inserted in Customer.\r\n";
+            echo "There were " . $count_of_Updates_in_Customer . " rows updated in Customer.\r\n";
+            ?> <br> <?php
+            echo "There were " . $count_of_Inserts_in_Cart . " rows inserted in Cart.\r\n";
+            echo "There were " . $count_of_Updates_in_Cart . " rows updated in Cart.\r\n";
+            ?> <br> <?php
+            echo "There were " . $count_of_Inserts_in_Pay . " rows inserted in Payment_Methods.\r\n";
+            echo "There were " . $count_of_Updates_in_Pay . " rows updated in Payment_Methods.\r\n";
+            ?>
             <?php
         } else{?>
             <h1><span class="text-danger">Import Failed!</span></h1>
