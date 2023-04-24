@@ -57,7 +57,7 @@
         </tr>
         <tr>
             <th>&#9900 Category_ID - The ID associated with the category.
-                Valid values are any integer 0 or greater. This value must be unique and is auto-incrementing.
+                Valid values are any integer 1 or greater. This value must be unique and is auto-incrementing.
                 It functionally determines all the non-key attributes in the Category table. This value is a primary key of the table.</th>
         </tr>
         <tr>
@@ -76,7 +76,7 @@
             <th class="tableHeader">CUSTOMER</th>
         </tr>
         <tr>
-            <th>&#9900  Customer_ID - The ID of the customer. Valid values are any integer 0 or greater.
+            <th>&#9900  Customer_ID - The ID of the customer. Valid values are any integer 1 or greater.
                 This value must be unique and is auto-incrementing. It functionally determines all the non-key attributes in the Customer table.
                 This value is a primary key of the table. </th>
         </tr>
@@ -143,7 +143,7 @@
             <th class="tableHeader">ITEMS</th>
         </tr>
         <tr>
-            <th>&#9900 Item_Number - The ID associated with the item. Valid values are any integer 0 or greater.
+            <th>&#9900 Item_Number - The ID associated with the item. Valid values are any integer 1 or greater.
                 This value must be unique and is auto-incrementing. It functionally determines all the non-key attributes in the Items table.
                 This value is a primary key of the table.</th>
         </tr>
@@ -181,7 +181,7 @@
         </tr>
         <tr>
             <th>&#9900 Order_ID - The ID associated with a customer’s order.
-                Valid values are any integer 0 or greater. This value must be unique and is auto-incrementing.
+                Valid values are any integer 1 or greater. This value must be unique and is auto-incrementing.
                 It functionally determines all the non-key attributes in the Customer table. This value is a primary key of the table.</th>
         </tr>
         <tr>
@@ -205,7 +205,7 @@
         </tr>
         <tr>
             <th>&#9900 Order Detail_ID - The ID associated with a customer’s order details.
-                Valid values are any integer 0 or greater. This value must be unique and is auto-incrementing.
+                Valid values are any integer 1 or greater. This value must be unique and is auto-incrementing.
                 It functionally determines all the non-key attributes in the Order Detail table.
                 This value is a primary key of the table.</th>
         </tr>
@@ -226,10 +226,6 @@
                 Valid values are any numbers that have a length of eight, with two digits after the decimal point.
                 Functionally determined by Order Detail_ID and Order_ID.. </th>
         </tr>
-        <tr>
-            <th>&#9900 Total Amount - The total amount of the order, which is the sum of all item costs in the order.
-                Valid values are any numbers that have a length of eight, with two digits after the decimal point. Functionally determined by Order Detail_ID and Order_ID.</th>
-        </tr>
     </table>
     <br><br>
 
@@ -249,6 +245,10 @@
             <th>&#9900 Amount - The total amount of the order,
                 which is the sum of all item costs in the order plus any tax or shipping costs.
                 Valid values are any numbers that have a length of eight, with two digits after the decimal point. Functionally determined by Order Detail_ID and Order_ID.</th>
+        </tr>
+        <tr>
+            <th>&#9900 Payment_no - The number associated with an order payment. Valid values are any integer 1 or greater.
+                Functionally determined by Order Detail_ID and Customer_ID.</th>
         </tr>
     </table>
     <br><br>
