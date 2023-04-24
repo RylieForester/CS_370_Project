@@ -8,6 +8,13 @@ $import_attempted = false;
 $import_succeeded = false;
 $import_error_message = "";
 
+$count_of_Inserts_in_Order = 0;
+$count_of_Inserts_in_Order_Det = 0;
+$count_of_Inserts_in_Order_Pay = 0;
+$count_of_Updates_in_Order = 0;
+$count_of_Updates_in_Order_Det = 0;
+$count_of_Updates_in_Order_Pay = 0;
+
 if($_SERVER["REQUEST_METHOD"] == "POST"){
     $import_attempted = true;
 
@@ -22,8 +29,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             $contents = file_get_contents($_FILES["importFile"]["tmp_name"]);
             $lines = explode( "\n", $contents);
             $count = 0;
-            $count_of_Inserts = 0;
-            $count_of_Updates = 0;
 
             foreach($lines as $line){
 
@@ -41,15 +46,16 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 $Total_Amount = $parsed_csv_line[8];
                 $Item_Number = $parsed_csv_line[9];
                 $Amount = $parsed_csv_line[10];
+                $Payment_no = $parsed_csv_line[11];
 
                 $mysql_First_Insert = "INSERT INTO mydb.Order(Order_ID, Shipping_Addr, Billing_Addr, Est_Delivery_Date, Customer_ID) 
                                     VALUES (" . $Order_ID . " , '" . $Shipping_Addr . "', '" . $Billing_Addr . "','" . $Est_Delivery_Date . "','" . $Customer_ID . "');";
 
-                $mysql_Second_Insert = "INSERT INTO mydb.Order_Detail(Order_Detail_ID, Order_ID, Quantity_of_Item, Cost, Total_Amount, Item_Number)
-                                    VALUES (" . $Order_Detail_ID . " , '" . $Order_ID . "', '" . $Quantity_of_Item . "', '" . $Cost . "', '" . $Total_Amount . "', '" . $Item_Number . "');";
+                $mysql_Second_Insert = "INSERT INTO mydb.Order_Detail(Order_Detail_ID, Order_ID, Quantity_of_Item, Cost, Item_Number)
+                                    VALUES (" . $Order_Detail_ID . " , '" . $Order_ID . "', '" . $Quantity_of_Item . "', '" . $Cost . "', '" . $Item_Number . "');";
 
-                $mysql_Third_Insert = "INSERT INTO mydb.Order_Payment(Order_ID, Customer_ID, Amount)
-                                    VALUES (" . $Order_ID . " , '" . $Customer_ID . "', '" . $Amount . "');";
+                $mysql_Third_Insert = "INSERT INTO mydb.Order_Payment(Order_ID, Customer_ID, Amount, Payment_no)
+                                    VALUES (" . $Order_ID . " , '" . $Customer_ID . "', '" . $Amount .  "', '" . $Payment_no . "');";
 
                 $mysql_First_Update = "UPDATE mydb.Order
                                         SET
@@ -66,9 +72,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                                         Order_ID = '" . $Order_ID . "', 
                                         Quantity_of_Item = '" . $Quantity_of_Item . "',
                                         Cost = '" . $Cost . "',
-                                        Total_Amount = '" . $Total_Amount . "',
                                         Item_Number = '" . $Item_Number . "'
-                                        WHERE Order_Detail_ID = '" . $Order_Detail_ID . "'";
+                                        WHERE Order_Detail_ID = '" . $Order_Detail_ID . "'
+                                        AND Order_ID = '" . $Order_ID . "'";
 
                 if ($count > 0) {
 
@@ -81,41 +87,44 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     if ($Shipping_Addr != $prev_Shipping_Addr) {
                         if ($Order_row_count < 1) {
                             mysqli_query($connection, $mysql_First_Insert);
-                            $count_of_Inserts++;
+                            $count_of_Inserts_in_Order++;
                         }else {
                             mysqli_query($connection, $mysql_First_Update);
-                            $count_of_Updates++;
+                            $count_of_Updates_in_Order++;
                         }
                     }
 
-                    $sql_Order_Det_Select = "SELECT Order_Detail.Order_Detail_ID
+                    $sql_Order_Det_Select = "SELECT Order_Detail.Order_ID, Order_Detail.Order_Detail_ID
                                         FROM mydb.Order_Detail
-                                        WHERE Order_Detail_ID = '" . $Order_Detail_ID . "'";
+                                        WHERE Order_ID = '" . $Order_ID . "'
+                                        AND Order_Detail_ID = '" . $Order_Detail_ID . "'" ;
                     $Order_Det_Select_result = mysqli_query($connection, $sql_Order_Det_Select);
                     $Order_Detail_row_count = mysqli_num_rows($Order_Det_Select_result);
 
-                    if ($Order_Detail_ID != $prev_Order_Detail_ID) {
+
                         if ($Order_Detail_row_count < 1) {
                             mysqli_query($connection, $mysql_Second_Insert);
-                            $count_of_Inserts++;
+                            $count_of_Inserts_in_Order_Det++;
                         }else {
                             mysqli_query($connection, $mysql_Second_Update);
-                            $count_of_Updates++;
+                            $count_of_Updates_in_Order_Det++;
                         }
-                    }
 
-                    $sql_Order_Pay_Select = "SELECT Order_payment.Order_ID
+                    $sql_Order_Pay_Select = "SELECT Order_payment.Order_ID, Order_payment.Payment_no
                                         FROM mydb.Order_payment
-                                        WHERE Order_ID = '" . $Order_ID . "'";
+                                        WHERE Order_ID = '" . $Order_ID . "'
+                                        AND Payment_no = '" . $Payment_no . "'" ;
                     $Order_Pay_Select_result = mysqli_query($connection, $sql_Order_Pay_Select);
                     $Order_Pay_row_count = mysqli_num_rows($Order_Pay_Select_result);
 
-                    if ($Order_ID != $prev_Order_ID) {
+
                         if ($Order_Pay_row_count < 1) {
                             mysqli_query($connection, $mysql_Third_Insert);
-                            $count_of_Inserts++;
+                            $count_of_Inserts_in_Order_Pay++;
+                        } else {
+                            $count_of_Updates_in_Order_Pay++;
                         }
-                    }
+
 
                 }
                 $count++;
@@ -127,87 +136,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 $prev_Shipping_Addr = $parsed_csv_line_2[1];
                 $prev_Order_Detail_ID = $parsed_csv_line_2[5];
                 $prev_Order_ID = $parsed_csv_line_2[0];
+                $prev_Payment_no = $parsed_csv_line_2[11];
 
-                if ($line === $lines[array_key_last($lines)]) {
-                    ?> <div class = "p-5 bg-dark"> <?php
-                    $result = $connection->query("SELECT * FROM mydb.Order");
+                //if ($line === $lines[array_key_last($lines)]) {
 
-                    $query = array();
-                    while($query[] = mysqli_fetch_assoc($result));
-                    array_pop($query);
 
-                    echo '<table border="1">';
-                    echo '<tr>';
-                    foreach($query[0] as $key => $value) {
-                        echo '<td>';
-                        echo $key;
-                        echo '</td>';
-                    }
-                    echo '</tr>';
-                    foreach($query as $row) {
-                        echo '<tr>';
-                        foreach($row as $column) {
-                            echo '<td>';
-                            echo $column;
-                            echo '</td>';
-                        }
-                        echo '</tr>';
-                    }
-                    echo '</table>';
-
-                    $result2 = $connection->query("SELECT * FROM mydb.Order_Detail");
-
-                    $query2 = array();
-                    while($query2[] = mysqli_fetch_assoc($result2));
-                    array_pop($query2);
-
-                    echo '<table border="1">';
-                    echo '<tr>';
-                    foreach($query2[0] as $key => $value) {
-                        echo '<td>';
-                        echo $key;
-                        echo '</td>';
-                    }
-                    echo '</tr>';
-                    foreach($query2 as $row) {
-                        echo '<tr>';
-                        foreach($row as $column) {
-                            echo '<td>';
-                            echo $column;
-                            echo '</td>';
-                        }
-                        echo '</tr>';
-                    }
-                    echo '</table>';
-
-                    $result3 = $connection->query("SELECT * FROM mydb.Order_Payment");
-
-                    $query3 = array();
-                    while($query3[] = mysqli_fetch_assoc($result3));
-                    array_pop($query3);
-
-                    echo '<table border="1">';
-                    echo '<tr>';
-                    foreach($query3[0] as $key => $value) {
-                        echo '<td>';
-                        echo $key;
-                        echo '</td>';
-                    }
-                    echo '</tr>';
-                    foreach($query3 as $row) {
-                        echo '<tr>';
-                        foreach($row as $column) {
-                            echo '<td>';
-                            echo $column;
-                            echo '</td>';
-                        }
-                        echo '</tr>';
-                    }
-                    echo '</table>';
-
-                    echo "There were " . $count_of_Inserts . " rows inserted and " . $count_of_Updates . " rows updated";
-    ?> </div> <?php
-                }
+                //}
 
 
                 }
@@ -239,7 +173,15 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         if($import_succeeded){
             ?>
             <h1><span class="text-success">Import Succeeded!</span></h1>
-
+            <?php echo "There were " . $count_of_Inserts_in_Order . " rows inserted in Order.\r\n";
+            echo "There were " . $count_of_Updates_in_Order . " rows updated in Order.\r\n";
+            ?> <br> <?php
+            echo "There were " . $count_of_Inserts_in_Order_Det . " rows inserted in Order_Detail.\r\n";
+            echo "There were " . $count_of_Updates_in_Order_Det . " rows updated in Order_Detail.\r\n";
+            ?> <br> <?php
+            echo "There were " . $count_of_Inserts_in_Order_Pay . " rows inserted in Order_Payment.\r\n";
+            echo "There were " . $count_of_Updates_in_Order_Pay . " rows updated in Order_Payment.\r\n";
+            ?>
             <?php
         } else{?>
             <h1><span class="text-danger">Import Failed!</span></h1>
