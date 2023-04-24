@@ -43,10 +43,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 $Order_Detail_ID = $parsed_csv_line[5];
                 $Quantity_of_Item = $parsed_csv_line[6];
                 $Cost = $parsed_csv_line[7];
-                $Total_Amount = $parsed_csv_line[8];
-                $Item_Number = $parsed_csv_line[9];
-                $Amount = $parsed_csv_line[10];
-                $Payment_no = $parsed_csv_line[11];
+                $Item_Number = $parsed_csv_line[8];
+                $Amount = $parsed_csv_line[9];
+                $Payment_no = $parsed_csv_line[10];
 
                 $mysql_First_Insert = "INSERT INTO mydb.Order(Order_ID, Shipping_Addr, Billing_Addr, Est_Delivery_Date, Customer_ID) 
                                     VALUES (" . $Order_ID . " , '" . $Shipping_Addr . "', '" . $Billing_Addr . "','" . $Est_Delivery_Date . "','" . $Customer_ID . "');";
@@ -136,7 +135,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 $prev_Shipping_Addr = $parsed_csv_line_2[1];
                 $prev_Order_Detail_ID = $parsed_csv_line_2[5];
                 $prev_Order_ID = $parsed_csv_line_2[0];
-                $prev_Payment_no = $parsed_csv_line_2[11];
+                $prev_Payment_no = $parsed_csv_line_2[10];
 
                 //if ($line === $lines[array_key_last($lines)]) {
 
