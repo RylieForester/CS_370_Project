@@ -6,6 +6,13 @@ $import_attempted = false;
 $import_succeeded = false;
 $import_error_message = "";
 
+$count_of_Inserts_in_Categories = 0;
+$count_of_Inserts_in_Items = 0;
+$count_of_Inserts_in_Reviews = 0;
+$count_of_Updates_in_Categories = 0;
+$count_of_Updates_in_Items = 0;
+$count_of_Updates_in_Reviews = 0;
+
 if($_SERVER["REQUEST_METHOD"] == "POST"){
     $import_attempted = true;
 
@@ -20,8 +27,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             $contents = file_get_contents($_FILES["importFile"]["tmp_name"]);
             $lines = explode( "\n", $contents);
             $count = 0;
-            $count_of_Inserts = 0;
-            $count_of_Updates = 0;
 
             foreach($lines as $line){
 
@@ -79,10 +84,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     if ($Category_Desc != $prev_Category_Desc) {
                         if ($Cat_row_count < 1) {
                             mysqli_query($connection, $mysql_First_Insert);
-                            $count_of_Inserts++;
+                            $count_of_Inserts_in_Categories++;
                         }else {
                             mysqli_query($connection, $mysql_First_Update);
-                            $count_of_Updates++;
+                            $count_of_Updates_in_Categories++;
                         }
                     }
 
@@ -95,10 +100,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     if ($Item_Name != $prev_Item_name) {
                         if ($Item_row_count < 1) {
                             mysqli_query($connection, $mysql_Second_Insert);
-                            $count_of_Inserts++;
+                            $count_of_Inserts_in_Items++;
                         } else {
                             mysqli_query($connection, $mysql_Second_Update);
-                            $count_of_Updates++;
+                            $count_of_Updates_in_Items++;
                         }
                     }
 
@@ -110,7 +115,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
                         if ($Review_row_count < 1) {
                             mysqli_query($connection, $mysql_Third_Insert);
-                            $count_of_Inserts++;
+                            $count_of_Inserts_in_Reviews++;
+                        } else {
+                            $count_of_Updates_in_Reviews++;
                         }
 
                 }
@@ -123,86 +130,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 $prev_Category_Desc = $parsed_csv_line_2[1];
                 $prev_Item_name = $parsed_csv_line_2[4];
 
-                if ($line === $lines[array_key_last($lines)]) {
-                    ?> <div class = "p-5 bg-dark"> <?php
-                    $result = $connection->query("SELECT * FROM mydb.Categories");
-
-                    $query = array();
-                    while($query[] = mysqli_fetch_assoc($result));
-                    array_pop($query);
-
-                    echo '<table border="1">';
-                    echo '<tr>';
-                    foreach($query[0] as $key => $value) {
-                        echo '<td>';
-                        echo $key;
-                        echo '</td>';
-                    }
-                    echo '</tr>';
-                    foreach($query as $row) {
-                        echo '<tr>';
-                        foreach($row as $column) {
-                            echo '<td>';
-                            echo $column;
-                            echo '</td>';
-                        }
-                        echo '</tr>';
-                    }
-                    echo '</table>';
-
-                    $result2 = $connection->query("SELECT * FROM mydb.Items");
-
-                    $query2 = array();
-                    while($query2[] = mysqli_fetch_assoc($result2));
-                    array_pop($query2);
-
-                    echo '<table border="1">';
-                    echo '<tr>';
-                    foreach($query2[0] as $key => $value) {
-                        echo '<td>';
-                        echo $key;
-                        echo '</td>';
-                    }
-                    echo '</tr>';
-                    foreach($query2 as $row) {
-                        echo '<tr>';
-                        foreach($row as $column) {
-                            echo '<td>';
-                            echo $column;
-                            echo '</td>';
-                        }
-                        echo '</tr>';
-                    }
-                    echo '</table>';
-
-                    $result3 = $connection->query("SELECT * FROM mydb.Reviews");
-
-                    $query3 = array();
-                    while($query3[] = mysqli_fetch_assoc($result3));
-                    array_pop($query3);
-
-                    echo '<table border="1">';
-                    echo '<tr>';
-                    foreach($query3[0] as $key => $value) {
-                        echo '<td>';
-                        echo $key;
-                        echo '</td>';
-                    }
-                    echo '</tr>';
-                    foreach($query3 as $row) {
-                        echo '<tr>';
-                        foreach($row as $column) {
-                            echo '<td>';
-                            echo $column;
-                            echo '</td>';
-                        }
-                        echo '</tr>';
-                    }
-                    echo '</table>';
-
-                    echo "There were " . $count_of_Inserts . " rows inserted and " . $count_of_Updates . " rows updated";
-    ?> </div> <?php
-                }
 
             }
             mysqli_close($connection);
@@ -231,7 +158,15 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             if($import_succeeded){
                 ?>
                 <h1><span class="text-success">Import Succeeded!</span></h1>
-
+                <?php echo "There were " . $count_of_Inserts_in_Categories . " rows inserted in Categories.\r\n";
+                echo "There were " . $count_of_Updates_in_Categories . " rows updated in Categories.\r\n";
+                ?> <br> <?php
+                echo "There were " . $count_of_Inserts_in_Items . " rows inserted in Items.\r\n";
+                echo "There were " . $count_of_Updates_in_Items . " rows updated in Items.\r\n";
+                ?> <br> <?php
+                echo "There were " . $count_of_Inserts_in_Reviews . " rows inserted in Reviews.\r\n";
+                echo "There were " . $count_of_Updates_in_Reviews . " rows updated in Reviews.\r\n";
+                ?>
                 <?php
             } else{?>
                 <h1><span class="text-danger">Import Failed!</span></h1>
