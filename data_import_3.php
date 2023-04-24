@@ -27,7 +27,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
                 $parsed_csv_line = str_getcsv($line);
 
-                //Do something with the parsed data . Look at the array (skip the first line).
+                //TODO: Do something with the parsed data . Look at the array (skip the first line).
                 $Customer_ID = $parsed_csv_line[0];
                 $First_name = $parsed_csv_line[1];
                 $Last_name = $parsed_csv_line[2];
@@ -129,6 +129,89 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 $parsed_csv_line_2 = str_getcsv($prev_line);
                 $prev_Customer_ID = $parsed_csv_line_2[0];
                 $prev_Order_Detail_ID = $parsed_csv_line_2[5];
+
+                if ($line === $lines[array_key_last($lines)]) {
+
+                    ?><div class = "p-5 bg-dark"> <?php
+
+                    $result = $connection->query("SELECT * FROM mydb.Customer");
+
+                    $query = array();
+                    while($query[] = mysqli_fetch_assoc($result));
+                    array_pop($query);
+
+                    echo '<table border="1">';
+                    echo '<tr>';
+                    foreach($query[0] as $key => $value) {
+                        echo '<td>';
+                        echo $key;
+                        echo '</td>';
+                    }
+                    echo '</tr>';
+                    foreach($query as $row) {
+                        echo '<tr>';
+                        foreach($row as $column) {
+                            echo '<td>';
+                            echo $column;
+                            echo '</td>';
+                        }
+                        echo '</tr>';
+                    }
+                    echo '</table>';
+
+                    $result2 = $connection->query("SELECT * FROM mydb.Cart");
+
+                    $query2 = array();
+                    while($query2[] = mysqli_fetch_assoc($result2));
+                    array_pop($query2);
+
+                    echo '<table border="1">';
+                    echo '<tr>';
+                    foreach($query2[0] as $key => $value) {
+                        echo '<td>';
+                        echo $key;
+                        echo '</td>';
+                    }
+                    echo '</tr>';
+                    foreach($query2 as $row) {
+                        echo '<tr>';
+                        foreach($row as $column) {
+                            echo '<td>';
+                            echo $column;
+                            echo '</td>';
+                        }
+                        echo '</tr>';
+                    }
+                    echo '</table>';
+
+                    $result3 = $connection->query("SELECT * FROM mydb.Payment_Methods");
+
+                    $query3 = array();
+                    while($query3[] = mysqli_fetch_assoc($result3));
+                    array_pop($query3);
+
+                    echo '<table border="1">';
+                    echo '<tr>';
+                    foreach($query3[0] as $key => $value) {
+                        echo '<td>';
+                        echo $key;
+                        echo '</td>';
+                    }
+                    echo '</tr>';
+                    foreach($query3 as $row) {
+                        echo '<tr>';
+                        foreach($row as $column) {
+                            echo '<td>';
+                            echo $column;
+                            echo '</td>';
+                        }
+                        echo '</tr>';
+                    }
+                    echo '</table>';
+
+                    echo "There were " . $count_of_Inserts . " rows inserted and " . $count_of_Updates . " rows updated";
+    ?> </div> <?php
+                }
 
             }
             $connection->close();
