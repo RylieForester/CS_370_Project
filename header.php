@@ -20,13 +20,13 @@
 
         <ul class="dropdown-menu">
             <li>
-                <a class="dropdown-item" href="#">Import Data 1</a>
+                <a class="dropdown-item" href="data_import_1.php">Import Data 1</a>
             </li>
             <li>
-                <a class="dropdown-item" href="#">Import Data 2</a>
+                <a class="dropdown-item" href="data_import_2.php">Import Data 2</a>
             </li>
             <li>
-                <a class="dropdown-item" href="#">Import Data 3</a>
+                <a class="dropdown-item" href="data_import_3.php">Import Data 3</a>
             </li>
 
         </ul>
