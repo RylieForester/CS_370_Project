@@ -1,15 +1,15 @@
-Customer_ID,First_name,Last_name,Age,Pref_gender,Phone_number,Address,Email,Username,Password,Customer_ID,Item_Number,Quantity_of_Item,Email,Payment_type,Card_number,Customer_ID
-1,Sarah,Johnson,30,Female,3099013299,"5504 Deerfield Ct., Peoria, IL",sjohnson123@gmail.com,sJohnson,j0hns0n1005!,1,1,2,sjohnson123@gmail.com,Credit,1234567812345678,1
-1,Sarah,Johnson,30,Female,3099013299,"5504 Deerfield Ct., Peoria, IL",sjohnson123@gmail.com,sJohnson,j0hns0n1005!,1,2,2,sjohnson123@gmail.com,Credit,1234567812345678,1
-2,Nathan,Kelly,75,Male,3094552004,"5500 Ramblewood Ct., Peoria, IL",nkelly333@yahoo.com,nKelly44,k311y1947$$,2,4,1,nkelly333@yahoo.com,Credit,0987094532865455,2
-3,Brandon,Ford,42,Male,3098477123,"5503 Timberedge Dr., Peoria, IL",bford22002@gmail.com,bFord,Brf0rD22!!!,3,4,3,bford22002@gmail.com,Debit,1176548897533440,3
-4,Jake,Johnson,55,Male,3090981234,"5501 Field Tree Ct., Peoria, IL",jjohnson1001@gmail.com,jJohnson2,jjOhnsOn0033$,4,3,1,jjohnson1001@gmail.com,Credit,6577893343488012,4
-5,Claire,Thompson,23,Female,3094567890,"5506 Stonebridge Ct., Peoria, IL",cwilliams9189@gmail.com,cThompson,c1@ireT11!,5,6,1,cwilliams9189@gmail.com,Debit,5459899956421234,5
-6,Tom,Foster,29,Male,3095554444,"1707 Spring Creek Rd., Washington, IL",tfoster1234@gmail.com,tFoster3,t0mF0st3r#24,6,7,1,tfoster1234@gmail.com,Credit,3466788034213408,6
-6,Tom,Foster,29,Male,3095554444,"1707 Spring Creek Rd., Washington, IL",tfoster1234@gmail.com,tFoster3,t0mF0st3r#24,6,8,1,tfoster1234@gmail.com,Credit,3466788034213408,6
-7,Robert,Jane,37,Male,3093460982,"2604 Oak Leaf Ln., Washington, IL",rjane4321@yahoo.com,rJane01,R0bJ@ne2004,7,1,1,rjane4321@yahoo.com,Credit,9246998654466733,7
-8,Cathy,Howard,68,Female,3098975324,"3090 Drake Ln., Washington, IL",choward43@gmail.com,cHoward1,cH0warD404!,8,8,1,choward43@gmail.com,Debit,3425676500987089,8
-9,Alix,Redford,20,Female,3099876377,"3102 Grandyle Dr., Washington, IL",aredford5566@gmail.com,aRedford19,Ajohn1780$$,9,5,2,aredford5566@gmail.com,Credit,8232454234599091,9
-10,Kylie,Williams,56,Female,3090321847,"4356 Winters Ct., Bartonville, IL",kwilliamsn0987@yahoo.com,kWilliams123,kwill6743!!#1,10,2,3,kwilliamsn0987@yahoo.com,Debit,1648291047330932,10
-11,Josh,Granger,26,Male,3098765999,"7808 Paradise Ct., Bartonville, IL",jgranger999@gmail.com,jGranger,jgran8398#1!,11,6,1,jgranger999@gmail.com,Debit,9837948218374905,11
-12,Kate,Bushell,53,Female,3094429301,"4004 Amsler St., Bartonville, IL ",kbushell5678@yahoo.com,kBushell,k@teBushe111988!,12,5,1,kbushell5678@yahoo.com,Credit,6453662821900928,12
+Customer_ID,First_name,Last_name,Age,Pref_gender,Phone_number,Address,Email,Username,Password,Item_Number,Quantity_of_Item,Payment_type,Card_number
+1,Sarah,Johnson,30,Female,3099013299,"5504 Deerfield Ct., Peoria, IL",sjohnson123@gmail.com,sJohnson,j0hns0n1005!,1,2,Credit,1234567812345670
+1,Sarah,Johnson,30,Female,3099013299,"5504 Deerfield Ct., Peoria, IL",sjohnson123@gmail.com,sJohnson,j0hns0n1005!,2,2,Debit,6582937856997126
+2,Nathan,Kelly,75,Male,3094552004,"5500 Ramblewood Ct., Peoria, IL",nkelly333@yahoo.com,nKelly44,k311y1947$$,4,1,Credit,987094532865455
+3,Brandon,Ford,42,Male,3098477123,"5503 Timberedge Dr., Peoria, IL",bford22002@gmail.com,bFord,Brf0rD22!!!,4,3,Debit,1176550000000000
+4,Jake,Johnson,55,Male,3090981234,"5501 Field Tree Ct., Peoria, IL",jjohnson1001@gmail.com,jJohnson2,jjOhnsOn0033$,3,1,Credit,6577893343488010
+5,Claire,Thompson,23,Female,3094567890,"5506 Stonebridge Ct., Peoria, IL",cwilliams9189@gmail.com,cThompson,c1@ireT11!,6,1,Debit,5459899956421230
+6,Tom,Foster,29,Male,3095554444,"1707 Spring Creek Rd., Washington, IL",tfoster1234@gmail.com,tFoster3,t0mF0st3r#24,7,1,Credit,3466788034213400
+6,Tom,Foster,29,Male,3095554444,"1707 Spring Creek Rd., Washington, IL",tfoster1234@gmail.com,tFoster3,t0mF0st3r#24,8,1,Credit,3466788034213400
+7,Robert,Jane,37,Male,3093460982,"2604 Oak Leaf Ln., Washington, IL",rjane4321@yahoo.com,rJane01,R0bJ@ne2004,1,1,Credit,9246998654466730
+8,Cathy,Howard,68,Female,3098975324,"3090 Drake Ln., Washington, IL",choward43@gmail.com,cHoward1,cH0warD404!,8,1,Debit,3425676500987080
+9,Alix,Redford,20,Female,3099876377,"3102 Grandyle Dr., Washington, IL",aredford5566@gmail.com,aRedford19,Ajohn1780$$,5,2,Credit,8232454234599090
+10,Kylie,Williams,56,Female,3090321847,"4356 Winters Ct., Bartonville, IL",kwilliamsn0987@yahoo.com,kWilliams123,kwill6743!!#1,2,3,Debit,1648291047330930
+11,Josh,Granger,26,Male,3098765999,"7808 Paradise Ct., Bartonville, IL",jgranger999@gmail.com,jGranger,jgran8398#1!,6,1,Debit,9837948218374900
+12,Kate,Bushell,53,Female,3094429301,"4004 Amsler St., Bartonville, IL",kbushell5678@yahoo.com,kBushell,k@teBushe111988!,5,1,Credit,6453662821900920
