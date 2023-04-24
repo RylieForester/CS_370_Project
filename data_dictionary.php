@@ -224,7 +224,7 @@
         <tr>
             <th>&#9900 Cost - The cost of an item in the order.
                 Valid values are any numbers that have a length of eight, with two digits after the decimal point.
-                Functionally determined by Order Detail_ID and Order_ID.. </th>
+                Functionally determined by Order Detail_ID and Order_ID. </th>
         </tr>
     </table>
     <br><br>
@@ -242,13 +242,13 @@
                 This value is a foreign key from the Customer_ID column in the Customer table.</th>
         </tr>
         <tr>
-            <th>&#9900 Amount - The total amount of the order,
-                which is the sum of all item costs in the order plus any tax or shipping costs.
-                Valid values are any numbers that have a length of eight, with two digits after the decimal point. Functionally determined by Order Detail_ID and Order_ID.</th>
+            <th>&#9900 Amount - The total amount of the order, which is the sum of all item costs in the order plus any tax or shipping costs.
+                Valid values are any numbers that have a length of eight, with two digits after the decimal point.
+                Functionally determined by Order_ID, Customer_ID, and Payment_no.</th>
         </tr>
         <tr>
             <th>&#9900 Payment_no - The number associated with an order payment. Valid values are any integer 1 or greater.
-                Functionally determined by Order Detail_ID and Customer_ID.</th>
+                This value must be unique and is auto-incrementing. It functionally determines all the non-key attributes in the Order Payment table.</th>
         </tr>
     </table>
     <br><br>
