@@ -32,11 +32,11 @@
 
             <ul class="text-light" style="text-align: justify; font-size: 20px">
                 <li style="padding-top: 15px; padding-bottom: 15px"><u>Import Data 1</u> - This link imports data into the
-                    Order, Order Detail, & Order Payment tables of our database.</li>
-                <li style="padding-top: 15px; padding-bottom: 15px"><u>Import Data 2</u> - This link imports data into the
                     Categories, Items, & Reviews tables of our database.</li>
-                <li style="padding-top: 15px; padding-bottom: 15px"><u>Import Data 3</u> - This link imports data into the
+                <li style="padding-top: 15px; padding-bottom: 15px"><u>Import Data 2</u> - This link imports data into the
                     Customer, Cart, & Payment Methods tables of our database.</li>
+                <li style="padding-top: 15px; padding-bottom: 15px"><u>Import Data 3</u> - This link imports data into the
+                    Order, Order Detail, & Order Payment tables of our database.</li>
             </ul>
 
             <p style="color: rgb(221, 96, 84)"><strong>*It is important to note that one <u>must</u> implement the second import
