@@ -38,10 +38,6 @@
                 <li style="padding-top: 15px; padding-bottom: 15px"><u>Import Data 3</u> - This link imports data into the
                     Order, Order Detail, & Order Payment tables of our database.</li>
             </ul>
-
-            <p style="color: rgb(221, 96, 84)"><strong>*It is important to note that one <u>must</u> implement the second import
-                    (Import Data 2), the third import (Import Data 3), and then the first Import (Import Data 1)
-                    due to how our database is structured.</strong></p>
         </li>
 
         <li style="padding-bottom: 15px"><u>Data Reports</u> - This is a dropdown menu that allows one to
