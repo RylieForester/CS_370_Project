@@ -129,7 +129,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 $count++;
 
                 //For full credit, track how many rows were inserted and updated in each entity, and print them out.
-                //TODO
+               
                 $prev_line = $line;
                 $parsed_csv_line_2 = str_getcsv($prev_line);
                 $prev_Shipping_Addr = $parsed_csv_line_2[1];
@@ -137,10 +137,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 $prev_Order_ID = $parsed_csv_line_2[0];
                 $prev_Payment_no = $parsed_csv_line_2[10];
 
-                //if ($line === $lines[array_key_last($lines)]) {
-
-
-                //}
+                
 
 
                 }
@@ -162,7 +159,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 <html lang="en">
 
 <head>
-    <title>Data Import Group 1</title>
+    <title>Data Import Group 3</title>
 </head>
 
 <body>
@@ -193,7 +190,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
 <div class="p-5 bg-dark">
 
-    <h1 class = "text-light" style="text-align: center; text-decoration: underline">Group 1 Data Import</h1>
+    <h1 class = "text-light" style="text-align: center; text-decoration: underline">Group 3 Data Import</h1>
     <br>
     <p class = "text-light" style="text-align: center"> Input the CSV file below for importing the Order, Order Detail, & Order Payment.</p>
     <br>
