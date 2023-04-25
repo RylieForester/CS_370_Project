@@ -148,7 +148,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 <html lang="en">
 
 <head>
- <title>Data Import Group 2</title>
+ <title>Data Import Group 1</title>
 </head>
 
 <body>
@@ -179,7 +179,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     <div class="p-5 bg-dark">
 
-        <h1 class = "text-light" style="text-align: center; text-decoration: underline">Group 2 Data Import</h1>
+        <h1 class = "text-light" style="text-align: center; text-decoration: underline">Group 1 Data Import</h1>
         <br>
         <p class = "text-light" style="text-align: center"> Input the CSV file below for importing the Categories, Items, and Reviews.</p>
         <br>
