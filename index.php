@@ -45,11 +45,11 @@
 
             <ul class="text-light" style="text-align: justify; font-size: 20px">
                 <li style="padding-top: 15px; padding-bottom: 15px"><u>Report 1</u> - This link reports on the imported data
-                    in the Order, Order Detail, & Order Payment tables from Import Data 1.</li>
+                    in the Categories, Items, & Reviews tables from Import Data 1.</li>
                 <li style="padding-top: 15px; padding-bottom: 15px"><u>Report 2</u> - This link reports on the imported data
-                    in the Categories, Items, & Reviews tables from Import Data 2.</li>
+                    in the Customer, Cart, & Payment Methods tables from Import Data 2.</li>
                 <li style="padding-top: 15px; padding-bottom: 15px"><u>Report 3</u> - This link reports on the imported data
-                    in the Customer, Cart, & Payment Methods tables from Import Data 3.</li>
+                    in the Order, Order Detail, & Order Payment tables from Import Data 3.</li>
             </ul>
         </li>
     </ul>
