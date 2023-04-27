@@ -64,8 +64,8 @@ function output_error($title, $error){
             echo "</tr>\n";
         }
 
-        $query = "SELECT t0.Order_ID, t0.Shipping_addr, t0.Billing_addr, t0.Est_Delivery_date, 
-                         t1.Order_Detail_ID, t1.Item_number, t1.Quantity_of_item, t1.Cost, 
+        $query = "SELECT t0.Order_ID, t0.Shipping_addr, t0.Billing_addr, t0.Est_Delivery_date,
+                         t1.Order_Detail_ID, t1.Item_number, t1.Quantity_of_item, t1.Cost,
                          t2.Customer_ID, t2.Amount, t2.Payment_no" .
                  "FROM mydb.Order t0" .
                  "INNER JOIN mydb.Order_detail t1 ON t0.Order_ID = t1.Order_ID" .
