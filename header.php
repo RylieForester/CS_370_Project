@@ -38,10 +38,10 @@
 
         <ul class="dropdown-menu">
             <li>
-                <a class="dropdown-item" href="#">Report 1</a>
+                <a class="dropdown-item" href="data_report_1.php">Report 1</a>
             </li>
             <li>
-                <a class="dropdown-item" href="#">Report 2</a>
+                <a class="dropdown-item" href="data_report_2.php">Report 2</a>
             </li>
             <li>
                 <a class="dropdown-item" href="#">Report 3</a>
