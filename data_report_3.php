@@ -6,7 +6,7 @@ $con = @mysqli_connect("127.0.0.1", "test_user", "password", "mydb");
 
 if(mysqli_connect_errno()){
     $connection_error = true;
-    $connection_error_message = "Failed ot connect to MySQL: ". mysqli_connect_error();
+    $connection_error_msg = "Failed ot connect to MySQL: ". mysqli_connect_error();
 }
 
 function output_error($title, $error){
@@ -22,15 +22,23 @@ function output_error($title, $error){
 
     <?php
     if($connection_error){
-        output_error("Database connection failure!", $connection_error_message);
+        output_error("Database connection failure!", $connection_error_msg);
     } else {
-        function output_table_open()
+        function output_table_open() //the very top row of cells in the table
         {
             echo "<table class = 'table table-striped'>\n";
             echo "<thead><tr class = 'dataHeaderRow'>\n";
             echo "  <td>Order No.</td>\n";
-            echo "  <td>Order Detail</td>\n";
-            echo "  <td>Order Payment</td>\n";
+            echo "  <td>Customer ID</td>\n";
+            echo "  <td>Order Detail ID</td>\n";
+            echo "  <td>Shipping Address</td>";
+            echo "  <td>Billing Address</td>";
+            echo "  <td>Est. Delivery Date</td>";
+            echo "  <td>Item No.</td>";
+            echo "  <td>Cost</td>";
+            echo "  <td>Quantity</td>";
+            echo "  <td>Amount</td>";
+            echo "  <td>Payment_no.</td>";
             echo "</tr></thead>\n";
         }
 
@@ -39,24 +47,20 @@ function output_error($title, $error){
             echo "</table>\n";
         }
 
-        function output_row($order, $orderDetail, $orderPayment)
-        {
-            echo "<tr class = 'pizzaDataRow'>\n";
-            echo "  <td>" . $order . "</td>\n";
-            echo "  <td>" . $orderDetail . "</td>\n";
-            echo "  <td>" . $orderPayment . "</td>\n";
-            echo "</tr>\n";
-        }
-
-        function output_detail_row($quantity, $cost, $itemNo, $detailID)
+        function output_detail_row($order_ID, $customer_ID, $order_detail_ID, $shipping_addr, $billing_addr, $est_delivery, $item_no, $cost, $quantity, $amount, $payment_no)
         {
             echo "<tr>\n";
-            echo "  <td colspan='3' class = 'dataDetailsCell'>\n";
-            echo "      Quantity: " . $quantity . "<br/>\n";
-            echo "      Subtotal: " . $cost . "<br/>\n";
-            echo "      Item No: " . $itemNo . "<br/>\n";
-            echo "      Order Detail: " . $detailID . "<br/>\n";
-            echo "  </td>\n";
+            echo "<td>" . $order_ID . "</td>";
+            echo "<td>" . $customer_ID . "</td>";
+            echo "<td>" . $order_detail_ID . "</td>";
+            echo "<td>" . $shipping_addr . "</td>";
+            echo "<td>" . $billing_addr . "</td>";
+            echo "<td>" . $est_delivery . "</td>";
+            echo "<td>" . $item_no . "</td>";
+            echo "<td>" . $cost . "</td>";
+            echo "<td>" . $quantity . "</td>";
+            echo "<td>" . $amount . "</td>";
+            echo "<td>" . $payment_no . "</td>";
             echo "</tr>\n";
         }
 
@@ -78,9 +82,12 @@ function output_error($title, $error){
         } else {
             //open table
             output_table_open();
-            $counter = 0;
+            $last_row = false;
             while($row = $result->fetch_array()){
-                echo $counter + 1;
+                if($last_row != $row["Order_ID"]){
+                    output_detail_row($row["Order_ID"],$row["Customer_ID"], $row["Order Detail_ID"], $row["Shipping_Addr"], $row["Billing_Addr"], $row["Est_Delivery_Date"], $row["Item_Number"], $row["Cost"],
+                                            $row["Quantity_of_Item"], $row["Amount"], $row["Payment_no"]);
+                }
             }
 
             output_table_close();
