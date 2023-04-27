@@ -185,6 +185,10 @@
                 It functionally determines all the non-key attributes in the Customer table. This value is a primary key of the table.</th>
         </tr>
         <tr>
+            <th>&#9900 Customer_ID - The ID of the customer.
+                This value is a foreign key from the Customer_ID column in the Customer table.</th>
+        </tr>
+        <tr>
             <th>&#9900 Shipping_Addr - The shipping address listed for the order.
                 Valid values are any valid address. Functionally determined by Order_ID.</th>
         </tr>
