@@ -78,9 +78,9 @@ function output_error($title, $error){
         } else {
             //open table
             output_table_open();
-
+            $counter = 0;
             while($row = $result->fetch_array()){
-                
+                echo $counter + 1;
             }
         }
 
