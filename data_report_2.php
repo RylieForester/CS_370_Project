@@ -129,7 +129,7 @@ function output_error($title, $error){
             echo "</tr>\n";
 
             echo "<tr style='background-color: rgb(140, 85, 151)'>\n";
-            echo "  <td id = 'dataInfo' style='text-align: left' colspan='5'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" . $payment_type   . "</td>\n";
+            echo "  <td id = 'dataInfo' style='text-align: left' colspan='5'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" . $payment_type   . "</td>\n";
             echo "  <td id = 'dataInfo' colspan='5'>" . $card_number    . "</td>\n";
             echo "</tr>\n";
         }
