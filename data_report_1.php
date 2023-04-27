@@ -2,7 +2,7 @@
 $connection_error = false;
 $connection_error_msg = "";
 
-$con = @mysqli_connect("localhost", "username", "password", "database");
+$con = @mysqli_connect("127.0.0.1", "test_user", "password", "mydb");
 
 if(mysqli_connect_errno()){
     $connection_error = true;
@@ -61,8 +61,8 @@ function output_error($title, $error){
         }
 
         $query = "SELECT t0.Order_ID, t0.Shipping_addr, t0.Billing_addr, t0.Est_Delivery_date, 
-                        t1.Order_Detail_ID, t1.Item_number, t1.Quantity_of_item, t1.Cost, 
-                        t2.Customer_ID, t2.Amount, t2.Payment_no" .
+                         t1.Order_Detail_ID, t1.Item_number, t1.Quantity_of_item, t1.Cost, 
+                         t2.Customer_ID, t2.Amount, t2.Payment_no" .
                  "FROM mydb.Order t0" .
                  "INNER JOIN mydb.Order_detail t1 ON t0.Order_ID = t1.Order_ID" .
                  "LEFT OUTER JOIN mydb.order_payment t2 ON t2.Order_ID = t1.Order_ID";
@@ -82,6 +82,8 @@ function output_error($title, $error){
             while($row = $result->fetch_array()){
                 echo $counter + 1;
             }
+
+            output_table_close();
         }
 
     }
