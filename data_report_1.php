@@ -34,14 +34,14 @@ function output_error($title, $error){
 
     #headers{
         font-weight: bold;
-        font-size: 20px;
+        font-size: 18px;
         width: 100px;
         border-right: 6px solid white;
         border-left: 6px solid white;
     }
 
     #categoryInfo{
-        font-size: 30px;
+        font-size: 16px;
         text-align: left;
         border-right: 6px solid white;
         border-left: 6px solid white;
@@ -49,7 +49,7 @@ function output_error($title, $error){
     }
 
     #dataInfo{
-        font-size: 20px;
+        font-size: 16px;
         text-align: center;
         border-right: 6px solid white;
         border-left: 6px solid white;
