@@ -28,7 +28,7 @@ function output_error($title, $error){
         {
             echo "<table class = 'table table-striped'>\n";
             echo "<thead><tr class = 'dataHeaderRow'>\n";
-            echo "  <td>Order</td>\n";
+            echo "  <td>Order No.</td>\n";
             echo "  <td>Order Detail</td>\n";
             echo "  <td>Order Payment</td>\n";
             echo "</tr></thead>\n";
