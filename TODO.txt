@@ -2,7 +2,7 @@ When you're finished, edit this file and push it. Put your name and date when yo
 
 1) Make 3 CSV Files (Rylie - 04.21.23)
 2) Finish Data Dictionary (Rylie - 04.12.23)
-3) Make 3 data reports
+3) Make 3 data reports (Rylie - 04.27.23)
 4) 3 import processes that push data into tables (Michael)
 5) Make homepage (Rylie - 04.19.23)
 6) Insert ERD into website (Rylie - 04.11.23)
