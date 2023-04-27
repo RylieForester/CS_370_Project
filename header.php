@@ -44,7 +44,7 @@
                 <a class="dropdown-item" href="data_report_2.php">Report 2</a>
             </li>
             <li>
-                <a class="dropdown-item" href="#">Report 3</a>
+                <a class="dropdown-item" href="data_report_3.php">Report 3</a>
             </li>
 
         </ul>
