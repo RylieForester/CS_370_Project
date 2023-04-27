@@ -304,8 +304,12 @@
                 This value is a foreign key from the Item_Number in the Items table.</th>
         </tr>
         <tr>
-            <th>&#9900 Date_added - The date the review was added by a customer.
-                Valid values are any valid dates. Functionally determined by Customer_ID. </th>
+            <th>&#9900 Rating - The rating of an item by a customer.
+                Valid values are 1, 2, 3, 4, & 5. Functionally determined by Customer_ID. </th>
+        </tr>
+        <tr>
+            <th>&#9900 User_Comments - The comments a user gives about an item.
+                Valid values are any string of up to 255 characters. Functionally determined by Customer_ID. </th>
         </tr>
     </table>
 </div>
