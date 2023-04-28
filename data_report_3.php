@@ -130,7 +130,7 @@ if($connection_error){
     $query = "SELECT t0.*, t1.Order_Detail_ID, t1.Item_Number, t1.Quantity_of_Item, t1.Cost, t2.Amount, t2.Payment_no" .
         " FROM mydb.Order t0" .
         " INNER JOIN mydb.Order_Detail t1 ON t0.Order_ID = t1.Order_ID" .
-        " LEFT OUTER JOIN mydb.Order_Payment t2 ON t0.Customer_ID = t2.Customer_ID" .
+        " LEFT OUTER JOIN mydb.Order_Payment t2 ON t0.Customer_ID = t2.Customer_ID AND t1.Order_ID = t2.Order_ID" .
         " ORDER BY t0.Order_ID, t1.Order_Detail_ID, t2.Payment_no";
 
     $result = mysqli_query($con, $query);
