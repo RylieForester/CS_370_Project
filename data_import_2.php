@@ -16,7 +16,7 @@ $count_of_Updates_in_Reviews = 0;
 if($_SERVER["REQUEST_METHOD"] == "POST"){
     $import_attempted = true;
 
-    $connection = @mysqli_connect("localhost", "data_import", "amazon", "mydb");
+    $connection = @mysqli_connect("localhost", "data_import", "asdfghjkl", "mydb");
 
     if(mysqli_connect_errno()){
         $import_error_message = "Failed to connect to MySQL: ". mysqli_connect_error();
@@ -32,7 +32,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
                 $parsed_csv_line = str_getcsv($line);
 
-                //TODO: Do something with the parsed data . Look at the array (skip the first line).
+                //Do something with the parsed data . Look at the array (skip the first line).
                 $Category_ID = $parsed_csv_line[0];
                 $Category_Desc = $parsed_csv_line[1];
                 $Category_type = $parsed_csv_line[2];
