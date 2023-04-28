@@ -16,7 +16,7 @@ $count_of_Updates_in_Pay = 0;
 if($_SERVER["REQUEST_METHOD"] == "POST"){
     $import_attempted = true;
 
-    $connection = @mysqli_connect("localhost", "data_import", "amazon", "mydb");
+    $connection = @mysqli_connect("localhost", "newuser", "mike", "mydb");
 
     if(mysqli_connect_errno()){
         $import_error_message = "Failed to connect to MySQL: ". mysqli_connect_error();
@@ -78,6 +78,15 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                                         Quantity_of_Item = '" . $Quantity_of_Item . "'
                                         WHERE Customer_ID = '" . $Customer_ID . "'";
 
+                $mysql_Third_Update = "UPDATE mydb.Payment_methods
+                                        SET
+                                        Customer_ID = '"  . $Customer_ID . "',   
+                                        Email = '" . $Email . "', 
+                                        Payment_type = '" . $Payment_type . "',
+                                        Card_Number = '" . $Card_Number . "'
+                                        WHERE Customer_ID = '" . $Customer_ID . "'
+                                        AND Card_number = '" . $Card_Number . "'";
+
                 if ($count > 0) {
 
                     $sql_Customer_Select = "SELECT Customer.Customer_ID
@@ -112,17 +121,19 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                         }
                     }
 
-                    $sql_Pay_Select = "SELECT Payment_Methods.Customer_ID
+                    $sql_Pay_Select = "SELECT Payment_Methods.Customer_ID, Payment_methods.card_number
                                         FROM mydb.Payment_Methods
-                                        WHERE Customer_ID = '" . $Customer_ID . "'";
+                                        WHERE Customer_ID = '" . $Customer_ID . "'
+                                        AND Card_number = '" . $Card_Number . "'";
                     $Pay_Select_result = mysqli_query($connection, $sql_Pay_Select);
                     $Pay_row_count = mysqli_num_rows($Pay_Select_result);
 
-                    if ($Customer_ID != $prev_Customer_ID) {
+                    if ($Customer_ID != $prev_Customer_ID || $Card_Number != $prev_Card_Number) {
                         if ($Pay_row_count < 1) {
                             mysqli_query($connection, $mysql_Third_Insert);
                             $count_of_Inserts_in_Pay++;
                         } else {
+                            mysqli_query($connection, $mysql_Third_Update);
                             $count_of_Updates_in_Pay++;
                         }
                     }
@@ -135,6 +146,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 $parsed_csv_line_2 = str_getcsv($prev_line);
                 $prev_Customer_ID = $parsed_csv_line_2[0];
                 $prev_Order_Detail_ID = $parsed_csv_line_2[5];
+                $prev_Card_Number = $parsed_csv_line_2[13];
 
 
             }
