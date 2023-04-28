@@ -18,7 +18,7 @@ $count_of_Updates_in_Order_Pay = 0;
 if($_SERVER["REQUEST_METHOD"] == "POST"){
     $import_attempted = true;
 
-    $connection = @mysqli_connect("localhost", "data_import", "amazon", "mydb");
+    $connection = @mysqli_connect("localhost", "newuser", "mike", "mydb");
 
     if(mysqli_connect_errno()){
         $import_error_message = "Failed to connect to MySQL: ". mysqli_connect_error();
@@ -75,6 +75,15 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                                         WHERE Order_Detail_ID = '" . $Order_Detail_ID . "'
                                         AND Order_ID = '" . $Order_ID . "'";
 
+                $mysql_Third_Update = "UPDATE mydb.Order_payment
+                                        SET
+                                        Order_ID = '"  . $Order_ID . "',   
+                                        Payment_no = '" . $Payment_no . "',
+                                        Customer_ID = '" . $Customer_ID . "',
+                                        Amount = '" . $Amount . "'
+                                        WHERE Order_ID = '" . $Order_ID . "'
+                                        AND Payment_no = '" . $Payment_no . "'";
+
                 if ($count > 0) {
 
                     $sql_Order_Select = "SELECT Order.Shipping_Addr
@@ -121,6 +130,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             mysqli_query($connection, $mysql_Third_Insert);
                             $count_of_Inserts_in_Order_Pay++;
                         } else {
+                            mysqli_query($connection, $mysql_Third_Update);
                             $count_of_Updates_in_Order_Pay++;
                         }
 
@@ -129,16 +139,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 $count++;
 
                 //For full credit, track how many rows were inserted and updated in each entity, and print them out.
-               
+                //TODO
                 $prev_line = $line;
                 $parsed_csv_line_2 = str_getcsv($prev_line);
                 $prev_Shipping_Addr = $parsed_csv_line_2[1];
                 $prev_Order_Detail_ID = $parsed_csv_line_2[5];
                 $prev_Order_ID = $parsed_csv_line_2[0];
                 $prev_Payment_no = $parsed_csv_line_2[10];
-
-                
-
 
                 }
 
