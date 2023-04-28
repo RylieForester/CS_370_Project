@@ -127,10 +127,10 @@ if($connection_error){
         echo "</tr>\n";
     }
 
-    $query = "SELECT t0.Order_ID, t0.Shipping_Addr, t0.Billing_Addr, t0.Est_Delivery_Date, t1.Order_Detail_ID, t1.Item_Number, t1.Quantity_of_Item, t1.Cost, t2.Customer_ID, t2.Amount, t2.Payment_no" .
+    $query = "SELECT t0.*, t1.Order_Detail_ID, t1.Item_Number, t1.Quantity_of_Item, t1.Cost, t2.Amount, t2.Payment_no" .
         " FROM mydb.Order t0" .
         " INNER JOIN mydb.Order_Detail t1 ON t0.Order_ID = t1.Order_ID" .
-        " LEFT OUTER JOIN mydb.Order_Payment t2 ON t0.Order_ID = t2.Order_ID" .
+        " LEFT OUTER JOIN mydb.Order_Payment t2 ON t0.Customer_ID = t2.Customer_ID" .
         " ORDER BY t0.Order_ID, t1.Order_Detail_ID, t2.Payment_no";
 
     $result = mysqli_query($con, $query);
@@ -163,7 +163,7 @@ if($connection_error){
 
             }
 
-            if($last_order_payment != $row["Order_ID"]){
+            if($last_order_payment != $row["Payment_no"]){
 
                 //Output order payment row.
                 output_order_payment_row($row["Payment_no"], $row["Amount"]);
@@ -172,7 +172,7 @@ if($connection_error){
 
             $last_order = $row["Order_ID"];
             $last_order_detail = $row["Order_Detail_ID"];
-            $last_order_payment = $row["Order_ID"];
+            $last_order_payment = $row["Payment_no"];
 
         }
         //Closes table.
