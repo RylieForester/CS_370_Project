@@ -272,7 +272,8 @@
         </tr>
         <tr>
             <th>&#9900 Card_number - The card number associated with the payment type of the customer.
-                Valid values are any valid card numbers that have a length of 16. Functionally determined by Customer_ID. It is also part of the composite key of the table.</th>
+                Valid values are any valid card numbers that have a length of 16. Functionally determined by Customer_ID.
+                It is also part of the composite key of this table.</th>
         </tr>
     </table>
     <br><br>
