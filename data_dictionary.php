@@ -264,7 +264,7 @@
         </tr>
         <tr>
             <th>&#9900 Customer_ID - The ID of the customer.
-                This value is a foreign key from the Customer_ID column in the Customer table.</th>
+                This value is a foreign key from the Customer_ID column in the Customer table and is part of the composite key of this table.</th>
         </tr>
         <tr>
             <th>&#9900 Payment_type - The type of payment method of the customer. Valid values are “Credit” and  “Debit.”
@@ -272,7 +272,7 @@
         </tr>
         <tr>
             <th>&#9900 Card_number - The card number associated with the payment type of the customer.
-                Valid values are any valid card numbers that have a length of 16. Functionally determined by Customer_ID.</th>
+                Valid values are any valid card numbers that have a length of 16. Functionally determined by Customer_ID. It is also part of the composite key of the table.</th>
         </tr>
     </table>
     <br><br>
