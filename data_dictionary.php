@@ -267,7 +267,7 @@
                 This value is a foreign key from the Customer_ID column in the Customer table and is part of the composite key of this table.</th>
         </tr>
         <tr>
-            <th>&#9900 Payment_type - The type of payment method of the customer. Valid values are “Credit” and  “Debit.”
+            <th>&#9900 Payment_type - The type of payment method of the customer. Valid values are “Credit” and “Debit.”
                 Functionally determined by Customer_ID.</th>
         </tr>
         <tr>
